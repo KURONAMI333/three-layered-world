@@ -1,33 +1,33 @@
-# Three Layered World (TLW)
+# Three Layered World
 
-> Overworld split into 3 layers: subterranean cave world, normal surface, sky islands. Each layer separated by void gap.
+> Three independent overworlds stacked in one dimension. Y 0-60: subterranean cave world. Y 80-160: normal surface world. Y 180-260: floating sky islands. Each layer is separated by a void gap. Climb up or dig down to enter a completely different world.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Modrinth](https://img.shields.io/badge/Modrinth-three-layered-world-00AF5C)](https://modrinth.com/mod/three-layered-world)
-[![CurseForge](https://img.shields.io/badge/CurseForge-three-layered-world-F16436)](https://www.curseforge.com/minecraft/mc-mods/three-layered-world)
+[![NeoForge 1.21.1](https://img.shields.io/badge/NeoForge-1.21.1-orange.svg)](https://neoforged.net)
+[![Depends on Isekai API](https://img.shields.io/badge/Depends-Isekai%20API-9333ea)](https://github.com/KURONAMI333/isekai-api)
 
 ---
 
-## Supported Loaders / Versions
+## Concept
 
-| Minecraft | NeoForge | Forge | Fabric |
-|---|:---:|:---:|:---:|
-| 1.21.1 | TBD | TBD | TBD |
-| 1.20.1 |  —  | TBD | TBD |
+The most ambitious consumer in the set. Each Y band is its own worldshape with its own ore distribution, structure placement rules, and mob spawn rules. Spawn in the surface layer at Y 80, then choose: descend to the cave world below or ascend to the sky islands above. Each layer feels like an entirely different dimension.
 
-(TBD: 実装後に更新)
+This is the **capstone demo** for Isekai API's multi-layer worldshape machinery: if Three Layered World works, the library can produce arbitrary stacks of arbitrary worldshapes.
 
----
+## How it works
 
-## Why?
+Three Layered World is built on **[Isekai API](https://github.com/KURONAMI333/isekai-api)**, a neutral universal worldgen library.
 
-(目的、解決する問題を 2-3 行で)
+It exercises `declareLayeredWorldshape` with three `LayeredDescriptor`s and `TransitionRule.Gap` between them. Each layer's density is itself a composition of Isekai primitives (e.g., the top layer uses the same `mask` + `distance` pattern as Sky World, the bottom layer uses `SurfaceAnchor.SolidCeiling` like Hollow Earth's inner layer).
 
-## Installation
+## Status
 
-1. ローダー導入
-2. 依存 MOD 導入（あれば）
-3. `three-layered-world-X.Y.Z-{loader}-{mc}.jar` を `mods/` に配置
+**v0.1**: skeleton. Three-layer declaration + per-layer density composition land with Isekai API v0.2.
+
+## Dependencies
+
+- NeoForge 1.21.1
+- [Isekai API](https://github.com/KURONAMI333/isekai-api) (required)
 
 ## License
 
